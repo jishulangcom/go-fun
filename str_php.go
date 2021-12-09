@@ -136,6 +136,20 @@ func Trim(str, charlist string) string {
 
 
 /*
+	【名称:】去除全部空格
+	【参数:】字符串(string)
+	【返回:】字符串(string)
+	【备注:】
+*/
+func TrimAll(str string) string {
+	if len(str) == 0 {
+		return ""
+	}
+	return strings.Join(strings.Fields(str),"")
+}
+
+
+/*
 	【名称:】移除字符串左侧的字符
 	【参数:】字符串(string)，要移除的字符(string)
 	【返回:】字符串(string)
