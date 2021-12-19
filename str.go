@@ -7,6 +7,7 @@ package fun
 import (
 	"math/rand"
 	"regexp"
+	"strconv"
 	"time"
 )
 
@@ -90,3 +91,51 @@ func Is_Email(email string) bool{
 	reg := regexp.MustCompile(pattern)
 	return reg.MatchString(email)
 }
+
+
+
+/*
+	【名称:】string转int
+	【参数:】字符串(str)
+	【返回:】int
+	【备注:】
+*/
+func Str_to_int(str string) int{
+	i, err := strconv.Atoi(str)
+	if err != nil {
+		return 0
+	}
+	return i
+}
+
+
+/*
+	【名称:】string转int64
+	【参数:】字符串(str)
+	【返回:】int64
+	【备注:】
+*/
+func Str_to_int64(str string) int64{
+	i, err := strconv.ParseInt(str, 10, 64)
+	if err != nil {
+		return 0
+	}
+	return i
+}
+
+
+/*
+	【名称:】string转float64
+	【参数:】str
+	【返回:】float64
+	【备注:】
+*/
+func Str_to_Float64(str string) float64 {
+	f, err := strconv.ParseFloat(str,64)
+	if err != nil {
+		return 0
+	}
+	return f
+}
+
+

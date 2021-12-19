@@ -5,7 +5,9 @@
 package fun
 
 import (
+	"encoding/binary"
 	"errors"
+	"math"
 	"strconv"
 )
 
@@ -88,4 +90,87 @@ func To_float64(val interface{}) (f64 float64, err error) {
 	default:
 		return 0, errors.New("转换为float64失败")
 	}
+}
+
+
+/*
+	【名称:】float64转string
+	【参数:】float
+	【返回:】string
+	【备注:】
+*/
+func Float64_to_str(float64 float64) string {
+	return strconv.FormatFloat(float64, 'E', -1, 64)
+}
+
+
+/*
+	【名称:】float32转byte
+	【参数:】float32
+	【返回:】byte
+	【备注:】
+*/
+func Float32_to_byte(float32 float32) []byte {
+	bits := math.Float32bits(float32)
+	bytes := make([]byte, 4)
+	binary.LittleEndian.PutUint32(bytes, bits)
+	return bytes
+}
+
+
+/*
+	【名称:】float64转byte
+	【参数:】float32
+	【返回:】byte
+	【备注:】
+*/
+func Float64_to_byte(float64 float64) []byte {
+	bits := math.Float64bits(float64)
+	bytes := make([]byte, 8)
+	binary.LittleEndian.PutUint64(bytes, bits)
+	return bytes
+}
+
+
+/*
+	【名称:】float64转int64
+	【参数:】float64
+	【返回:】int64
+	【备注:】
+*/
+func Float64_to_int64(float64 float64) int64 {
+	return int64(float64)
+}
+
+
+/*
+	【名称:】float64转int
+	【参数:】float64
+	【返回:】int
+	【备注:】
+*/
+func Float64_to_int(float64 float64) int {
+
+}
+
+
+/*
+	【名称:】float32转int64
+	【参数:】float32
+	【返回:】int64
+	【备注:】
+*/
+func Float32_to_int64(float64 float64) int64 {
+	return int64(float64)
+}
+
+
+/*
+	【名称:】float32转int
+	【参数:】float32
+	【返回:】int
+	【备注:】
+*/
+func Float32_to_int(float32 float32) int {
+
 }
