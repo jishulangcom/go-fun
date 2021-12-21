@@ -150,7 +150,7 @@ func Float64_to_int64(float64 float64) int64 {
 	【备注:】
 */
 func Float64_to_int(float64 float64) int {
-
+	return 0
 }
 
 
@@ -172,5 +172,5 @@ func Float32_to_int64(float64 float64) int64 {
 	【备注:】
 */
 func Float32_to_int(float32 float32) int {
-
+	return 0
 }
