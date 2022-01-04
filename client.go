@@ -18,7 +18,7 @@ import (
 	【返回:】ip字符(string)
 	【备注:】
 */
-func Ip_Client(req *http.Request) string {
+func ClientIp(req *http.Request) string {
 	remoteAddr := req.RemoteAddr
 	if ip := exnet.ClientPublicIP(req); ip != "" {
 		remoteAddr = ip

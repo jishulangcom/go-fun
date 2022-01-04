@@ -15,7 +15,7 @@ import (
 	【返回:】string
 	【备注:】
 */
-func Int_to_str(int int) string {
+func IntToStr(int int) string {
 	string := strconv.Itoa(int)
 	return string
 }
@@ -27,7 +27,7 @@ func Int_to_str(int int) string {
 	【返回:】string
 	【备注:】
 */
-func Int64_to_str(int64 int64) string {
+func Int64ToStr(int64 int64) string {
 	string := strconv.FormatInt(int64,10)
 	return string
 }
@@ -39,7 +39,7 @@ func Int64_to_str(int64 int64) string {
 	【返回:】int
 	【备注:】
 */
-func Int64_to_int(int64 int64) int {
+func Int64ToInt(int64 int64) int {
 	return *(*int)(unsafe.Pointer(&int64))
 }
 
@@ -50,7 +50,7 @@ func Int64_to_int(int64 int64) int {
 	【返回:】int64
 	【备注:】
 */
-func Int_to_int64(int int) int64 {
+func IntToInt64(int int) int64 {
 	return int64(int)
 }
 
@@ -61,7 +61,7 @@ func Int_to_int64(int int) int64 {
 	【返回:】int64
 	【备注:】
 */
-func Int_to_float64(int int) float64 {
+func IntToFloat64(int int) float64 {
 	return float64(int)
 }
 

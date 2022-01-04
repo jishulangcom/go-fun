@@ -15,7 +15,7 @@ import (
 	【返回:】文件流([]byte)
 	【备注:】
 */
-func File_get_contents(filePath string) ([]byte, error) {
+func FileGetContents(filePath string) ([]byte, error) {
 	f, err := os.Open(filePath)
 	if err != nil {
 	return []byte{}, err
@@ -32,6 +32,6 @@ func File_get_contents(filePath string) ([]byte, error) {
 	【返回:】错误状态(error)
 	【备注:】
 */
-func File_put_contents(filePath string, content string) error {
+func FilePutContents(filePath string, content string) error {
 	return ioutil.WriteFile(filePath, []byte(content), 0644)
 }

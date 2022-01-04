@@ -13,7 +13,7 @@ import "net"
 	【返回:】ip地址(string)
 	【备注:】
 */
-func Ip_serve() (ip string) {
+func ServeIp() (ip string) {
 	addrs, err := net.InterfaceAddrs()
 	if err != nil {
 		return ""

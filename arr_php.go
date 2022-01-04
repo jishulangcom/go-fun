@@ -5,7 +5,7 @@
 package fun
 
 import (
-	"reflect"
+	"fmt"
 	"strings"
 )
 
@@ -15,7 +15,7 @@ import (
 	【参数:】变量(interface)
 	【返回:】true/false(bool)
 */
-func Is_array(val interface{}) bool {
+func IsArray(val interface{}) bool {
 	if Gettype(val) == "array" {
 		return true
 	}
@@ -30,6 +30,7 @@ func Is_array(val interface{}) bool {
 	【备注:】参数arr必须为字符串类型的一维数组
 */
 func Implode (separator string, arr interface{}) string {
+	/*
 	v := reflect.ValueOf(arr)
 	len := v.Len()
 	if len == 0 {
@@ -46,6 +47,8 @@ func Implode (separator string, arr interface{}) string {
 		slice = append(slice, v.Index(i).String())
 	}
 	return strings.Join(slice, separator)
+	*/
+	return  strings.Replace(strings.Trim(fmt.Sprint(arr), "[]"), " ", separator, -1)
 }
 
 

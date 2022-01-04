@@ -15,7 +15,7 @@ import (
 	【返回:】true/false(bool)
 	【备注:】
 */
-func Is_int(variable interface{}) bool {
+func IsInt(variable interface{}) bool {
 	variableType := Gettype(variable)
 	if variableType == "int" || variableType == "uint" || variableType == "uint64" ||
 		variableType == "int64" || variableType == "uint32" || variableType == "int32" ||
@@ -32,12 +32,12 @@ func Is_int(variable interface{}) bool {
 	【返回:】true/false(bool)
 	【备注:】
 */
-func Is_numeric(variable interface{}) bool {
-	if Is_int(variable) || Is_float(variable) {
+func IsNumeric(variable interface{}) bool {
+	if IsInt(variable) || IsFloat(variable) {
 		return true
 	}
 
-	if Is_string(variable) {
+	if IsString(variable) {
 		tmpStr, err := variable.(string)
 		if err {
 			_, err := strconv.Atoi(tmpStr)

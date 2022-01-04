@@ -12,7 +12,7 @@ import (
 	【返回:】float32
 	【备注:】
 */
-func Byte_to_float32(bytes []byte) float32 {
+func ByteToFloat32(bytes []byte) float32 {
 	bits := binary.LittleEndian.Uint32(bytes)
 	return math.Float32frombits(bits)
 }
@@ -24,7 +24,7 @@ func Byte_to_float32(bytes []byte) float32 {
 	【返回:】float64
 	【备注:】
 */
-func Byte_to_float64(bytes []byte) float64 {
+func ByteToFloat64(bytes []byte) float64 {
 	bits := binary.LittleEndian.Uint64(bytes)
 
 	return math.Float64frombits(bits)

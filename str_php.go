@@ -20,7 +20,7 @@ import (
 	【返回:】true/false(bool)
 	【备注:】
 */
-func Is_string(variable interface{}) bool {
+func IsString(variable interface{}) bool {
 	if Gettype(variable) == "string" {
 		return true
 	}
@@ -45,7 +45,7 @@ func Explode(separator, str string) []string {
 	【返回:】长度(int)
 	【备注:】
 */
-func Mb_strlen(str string) int {
+func MbStrlen(str string) int {
 	return len([]rune(str))
 }
 
@@ -255,6 +255,6 @@ func Chr(ascii int32) string {
 	【返回:】字符(string)
 	【备注:】
 */
-func Str_repeat(input string, multiplier int) string {
+func StrRepeat(input string, multiplier int) string {
 	return strings.Repeat(input, multiplier)
 }

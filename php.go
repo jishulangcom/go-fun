@@ -26,7 +26,7 @@ func Gettype(variable interface{}) string {
 	【返回:】true/false(bool)
 	【备注:】
 */
-func Is_bool(variable interface{}) bool {
+func IsBool(variable interface{}) bool {
 	if Gettype(variable) == "bool" {
 		return true
 	}

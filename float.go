@@ -18,8 +18,8 @@ import (
 	【返回:】true/false(bool)
 	【备注:】
 */
-func Is_float(variable interface{}) bool {
-	return Is_double(variable)
+func IsFloat(variable interface{}) bool {
+	return IsDouble(variable)
 }
 
 
@@ -29,7 +29,7 @@ func Is_float(variable interface{}) bool {
 	【返回:】true/false(bool)
 	【备注:】
 */
-func Is_double(variable interface{}) bool {
+func IsDouble(variable interface{}) bool {
 	variableType := Gettype(variable)
 	if variableType == "float64" || variableType == "float32" {
 		return true
@@ -44,7 +44,7 @@ func Is_double(variable interface{}) bool {
 	【返回:】和(float64)，err(error)
 	【备注:】
 */
-func To_float64(val interface{}) (f64 float64, err error) {
+func ToFloat64(val interface{}) (f64 float64, err error) {
 	switch value := val.(type) {
 	case float64:
 		return value, nil
@@ -99,7 +99,7 @@ func To_float64(val interface{}) (f64 float64, err error) {
 	【返回:】string
 	【备注:】
 */
-func Float64_to_str(float64 float64) string {
+func Float64ToStr(float64 float64) string {
 	return strconv.FormatFloat(float64, 'E', -1, 64)
 }
 
@@ -110,7 +110,7 @@ func Float64_to_str(float64 float64) string {
 	【返回:】byte
 	【备注:】
 */
-func Float32_to_byte(float32 float32) []byte {
+func Float32ToByte(float32 float32) []byte {
 	bits := math.Float32bits(float32)
 	bytes := make([]byte, 4)
 	binary.LittleEndian.PutUint32(bytes, bits)
@@ -124,7 +124,7 @@ func Float32_to_byte(float32 float32) []byte {
 	【返回:】byte
 	【备注:】
 */
-func Float64_to_byte(float64 float64) []byte {
+func Float64ToByte(float64 float64) []byte {
 	bits := math.Float64bits(float64)
 	bytes := make([]byte, 8)
 	binary.LittleEndian.PutUint64(bytes, bits)
@@ -138,7 +138,7 @@ func Float64_to_byte(float64 float64) []byte {
 	【返回:】int64
 	【备注:】
 */
-func Float64_to_int64(float64 float64) int64 {
+func Float64ToInt64(float64 float64) int64 {
 	return int64(float64)
 }
 
@@ -149,7 +149,7 @@ func Float64_to_int64(float64 float64) int64 {
 	【返回:】int
 	【备注:】
 */
-func Float64_to_int(float64 float64) int {
+func Float64ToInt(float64 float64) int {
 	return 0
 }
 
@@ -160,7 +160,7 @@ func Float64_to_int(float64 float64) int {
 	【返回:】int64
 	【备注:】
 */
-func Float32_to_int64(float64 float64) int64 {
+func Float32ToInt64(float64 float64) int64 {
 	return int64(float64)
 }
 
@@ -171,6 +171,6 @@ func Float32_to_int64(float64 float64) int64 {
 	【返回:】int
 	【备注:】
 */
-func Float32_to_int(float32 float32) int {
+func Float32ToInt(float32 float32) int {
 	return 0
 }
