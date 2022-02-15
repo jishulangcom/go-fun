@@ -5,11 +5,6 @@
 package fun
 
 import (
-	"crypto/md5"
-	"crypto/sha1"
-	"crypto/sha256"
-	"encoding/hex"
-	"fmt"
 	"strings"
 )
 
@@ -176,7 +171,6 @@ func Rtrim(str, charlist string) string {
 	return strings.TrimRight(str, charlist)
 }
 
-
 /*
 	【名称:】从字符串右端移除字符
 	【参数:】字符串(string)，要移除的字符(string)
@@ -186,42 +180,6 @@ func Rtrim(str, charlist string) string {
 func Chop(str, charlist string) string {
 	return Rtrim(str, charlist)
 }
-
-
-/*
-	【名称:】md5
-	【参数:】字符串(string)
-	【返回:】字符串(string)
-	【备注:】
-*/
-func Md5(str string) string {
-	return fmt.Sprintf("%x", md5.Sum([]byte(str)))
-}
-
-
-/*
-	【名称:】sha1
-	【参数:】字符串(string)
-	【返回:】字符串(string)
-	【备注:】
-*/
-func Sha1(str string) string {
-	return (fmt.Sprintf("%x", sha1.Sum([]byte(str))))
-}
-
-
-/*
-	【名称:】Sha256
-	【参数:】字符串(string)
-	【返回:】字符串(string)
-	【备注:】
-*/
-func Sha256(str string) string {
-	hashInBytes := sha256.Sum256([]byte(str))
-	hashStr := hex.EncodeToString(hashInBytes[:])
-	return hashStr
-}
-
 
 /*
 	【名称:】返回字符串中第一个字符的 ASCII 值
