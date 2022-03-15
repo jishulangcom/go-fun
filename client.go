@@ -5,12 +5,13 @@
 package fun
 
 
+/*
 import (
 	"github.com/thinkeridea/go-extend/exnet"
 	"net"
 	"net/http"
 )
-
+*/
 
 /*
 	【名称:】获取客户端IP
@@ -18,6 +19,7 @@ import (
 	【返回:】ip字符(string)
 	【备注:】
 */
+/*
 func ClientIp(req *http.Request) string {
 	remoteAddr := req.RemoteAddr
 	if ip := exnet.ClientPublicIP(req); ip != "" {
@@ -38,3 +40,4 @@ func ClientIp(req *http.Request) string {
 
 	return remoteAddr
 }
+*/
