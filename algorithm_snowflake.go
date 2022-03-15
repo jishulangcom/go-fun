@@ -39,7 +39,7 @@ type snowflakeWorker struct {
 */
 func Snowflake(workerId int64) (*snowflakeWorker, error) {
 	if workerId < 0 || workerId > workerMax {
-		return nil, errors.New("Worker ID excess of quantity")
+		return nil, errors.New("Worker ID 超出数量")
 	}
 	// 生成一个新节点
 	return &snowflakeWorker{
