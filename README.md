@@ -1,1 +1,3 @@
-技术狼-常用方法
+**技术狼 http://www.jishulang.com**
+
+常用方法
