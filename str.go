@@ -5,6 +5,7 @@
 package fun
 
 import (
+	"math/big"
 	"math/rand"
 	"regexp"
 	"strconv"
@@ -120,4 +121,42 @@ func StrToFloat64(str string) float64 {
 		return 0
 	}
 	return f
+}
+
+/*
+	【名称:】string转*big.float
+	【参数:】str
+	【返回:】*big.Float
+	【备注:】
+*/
+func StrToBigFloat(str string) (*big.Float, bool) {
+	bigval, ok := new(big.Float).SetString(str)
+	if !ok {
+		return nil, false
+	}
+	return bigval, true
+}
+
+/*
+	【名称:】string转*big.Int
+	【参数:】str，exp精度位
+	【返回:】*big.Int
+	【备注:】
+*/
+func StrToBigInt(str string, exp int64) (*big.Int, bool) {
+	bigval, ok := StrToBigFloat(str)
+	if !ok {
+		return nil, false
+	}
+
+	coin := new(big.Float)
+	b := new(big.Int).Exp(big.NewInt(10), big.NewInt(exp), nil)
+	coin.SetInt(b)
+
+	bigval.Mul(bigval, coin)
+
+	result := new(big.Int)
+	bigval.Int(result)
+
+	return result, true
 }
