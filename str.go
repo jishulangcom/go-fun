@@ -100,15 +100,32 @@ func StrToInt(str string) int {
 /*
 	【名称:】string转int64
 	【参数:】字符串(str)
-	【返回:】int64
+	【返回:】int64，error
 	【备注:】
 */
-func StrToInt64(str string) int64 {
+func StrToInt64(str string) (int64, error) {
 	i, err := strconv.ParseInt(str, 10, 64)
 	if err != nil {
-		return 0
+		return 0, err
 	}
-	return i
+	return i, nil
+}
+
+/*
+	【名称:】string转uint64
+	【参数:】字符串(str)
+	【返回:】uint64，error
+	【备注:】
+*/
+func StrToUint64(str string) (uint64, error) {
+	i, err := StrToInt64(str)
+	if err != nil {
+		return 0, err
+	}
+
+	ui := uint64(i)
+
+	return ui, nil
 }
 
 /*
