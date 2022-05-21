@@ -10,6 +10,7 @@ import (
 	"regexp"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -168,11 +169,24 @@ func StrToBigInt(str string, exp int64) (*big.Int, bool) {
 	【返回:】布尔(bool)
 	【备注:】
 */
-func StrInArr(target string, str_array []string) bool {
+func StrIsInArr(target string, str_array []string) bool {
 	sort.Strings(str_array)
 	index := sort.SearchStrings(str_array, target)
 	//index的取值：[0,len(str_array)]
 	if index < len(str_array) && str_array[index] == target { //需要注意此处的判断，先判断 &&左侧的条件，如果不满足则结束此处判断，不会再进行右侧的判断
+		return true
+	}
+	return false
+}
+
+/*
+	【名称:】某字符是否存在字符串中
+	【参数:】字符(string)，字符串(string)
+	【返回:】布尔(bool)
+	【备注:】
+*/
+func StrIsInString(target string, strs string) bool {
+	if find := strings.Contains(strs, target); find {
 		return true
 	}
 	return false
