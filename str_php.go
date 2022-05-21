@@ -5,6 +5,7 @@
 package fun
 
 import (
+	"sort"
 	"strings"
 )
 
@@ -215,4 +216,21 @@ func Chr(ascii int32) string {
 */
 func StrRepeat(input string, multiplier int) string {
 	return strings.Repeat(input, multiplier)
+}
+
+
+/*
+	【名称:】某字符串是否存在数组中
+	【参数:】字符(string)，数组(array)
+	【返回:】布尔(bool)
+	【备注:】
+*/
+func StrInArr(target string, str_array []string) bool {
+	sort.Strings(str_array)
+	index := sort.SearchStrings(str_array, target)
+	//index的取值：[0,len(str_array)]
+	if index < len(str_array) && str_array[index] == target { //需要注意此处的判断，先判断 &&左侧的条件，如果不满足则结束此处判断，不会再进行右侧的判断
+		return true
+	}
+	return false
 }
