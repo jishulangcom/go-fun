@@ -64,3 +64,38 @@ func TimeStamp() int64 {
 	return time.Now().Unix()
 }
 
+
+/*
+	【名称:】一个字符串时间与当前时间的时间差
+	【参数:】字符串时间(string) 如：2022-05-22 23:59:59
+	【返回:】time.Duration，error
+	【备注:】
+*/
+func DateTimeStrAadNowSub(ts string) (time.Duration, error) {
+	// 本地时间
+	now := time.Now()
+
+	// 按照指定格式解析一个字符串格式的时间
+	_, err := time.Parse("2006-01-02 15:04:05", ts)
+	if err != nil {
+		return 0, err
+	}
+
+	// 按照东八区的时区格式解析一个字符串
+	tlocal, err := time.LoadLocation("Asia/Shanghai")
+	if err != nil {
+		return 0, err
+	}
+
+	// 按照指定的时区解析时间
+	t, err := time.ParseInLocation("2006-01-02 15:04:05", ts, tlocal)
+	if err != nil {
+		return 0, err
+	}
+
+	// 计算时间的差值
+	//reverseTime := now.Sub(t)
+	reverseTime := t.Sub(now)
+
+	return reverseTime, nil
+}
