@@ -89,12 +89,12 @@ func IsEmail(email string) bool {
 	【返回:】int
 	【备注:】
 */
-func StrToInt(str string) int {
+func StrToInt(str string) (int, error) {
 	i, err := strconv.Atoi(str)
 	if err != nil {
-		return 0
+		return 0, err
 	}
-	return i
+	return i, nil
 }
 
 /*
@@ -134,12 +134,12 @@ func StrToUint64(str string) (uint64, error) {
 	【返回:】float64
 	【备注:】
 */
-func StrToFloat64(str string) float64 {
+func StrToFloat64(str string) (float64, error) {
 	f, err := strconv.ParseFloat(str, 64)
 	if err != nil {
-		return 0
+		return 0, err
 	}
-	return f
+	return f, nil
 }
 
 /*
