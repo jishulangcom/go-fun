@@ -44,26 +44,35 @@ func TimestampToDatetime(timestamp int64) string {
 
 
 /*
-	【名称:】获取当前时间
+	【名称:】获取当前日期时间
 	【参数:】
 	【返回:】标准时间(string)
 	【备注:】时间格式：2021-12-30 23:14:07
 */
-func CurrentTime() string {
+func CurrentDateTime() string {
 	return time.Now().Format(ORIGIN_TIME)
 }
 
 
 /*
-	【名称:】获取时间戳
+	【名称:】获取时间戳（秒）
 	【参数:】
 	【返回:】时间戳(int64)
-	【备注:】秒
+	【备注:】
 */
-func TimeStamp() int64 {
+func TimeStampSecond() int64 {
 	return time.Now().Unix()
 }
 
+/*
+	【名称:】获取时间戳（毫秒）
+	【参数:】
+	【返回:】时间戳(int64)
+	【备注:】
+*/
+func Millisecond() int64 {
+	return time.Now().UnixNano() / 1e6
+}
 
 /*
 	【名称:】一个字符串时间与当前时间的时间差
