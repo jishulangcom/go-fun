@@ -5,7 +5,6 @@ import (
 	"path/filepath"
 )
 
-
 /*
 	【名称:】获取导入包的绝对路径
 	【参数:】包路由(string)，版本号
@@ -19,7 +18,7 @@ func GetImportPackagePath(packagePath string, version string) string {
 	for _, v := range arr {
 		path = filepath.Join(path, v)
 	}
-	path += "@"+ version
+	path += "@" + version
 
 	return path
 }
