@@ -1,3 +1,3 @@
-module go-fun
+module github.com/jishulangcom/go-fun
 
 go 1.17
