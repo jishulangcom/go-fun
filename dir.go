@@ -9,6 +9,14 @@ import (
 	"time"
 )
 
+type FileInfo struct {
+	Name    string    `json:"name"`     // 文件名
+	Suffix  string    `json:"suffix"`   // 后缀
+	Path    string    `json:"path"`     // 文件路径
+	Size    int64     `json:"size"`     // 文件大小
+	ModTime time.Time `json:"mod_time"` // 修改时间
+}
+
 /*
 	【名称:】目录是否存在
 	【参数:】文件路径(string)
@@ -111,8 +119,8 @@ func DirEndsWithSlash(dirPath string) string {
 	【返回:】路径(string)
 	【备注:】
 */
-func DirFilesBySuffix(dir string, suffix string) ([]DirFile, error) {
-	files := []DirFile{}
+func DirFilesBySuffix(dir string, suffix string) ([]FileInfo, error) {
+	files := []FileInfo{}
 
 	fis, err := ioutil.ReadDir(filepath.Clean(filepath.ToSlash(dir)))
 	if err != nil {
@@ -133,7 +141,7 @@ func DirFilesBySuffix(dir string, suffix string) ([]DirFile, error) {
 		switch filepath.Ext(fileName) {
 		case suffix:
 			name := Rtrim(f.Name(), suffix)
-			item := DirFile{
+			item := FileInfo{
 				Name:   name,
 				Path:   _path,
 				Suffix: suffix,
@@ -145,11 +153,4 @@ func DirFilesBySuffix(dir string, suffix string) ([]DirFile, error) {
 	}
 
 	return files, nil
-}
-type DirFile struct {
-	Name    string    `json:"name"`     // 文件名
-	Suffix  string    `json:"suffix"`   // 后缀
-	Path    string    `json:"path"`     // 文件路径
-	Size    int64     `json:"size"`     // 文件大小
-	ModTime time.Time `json:"mod_time"` // 修改时间
 }
