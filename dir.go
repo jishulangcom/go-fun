@@ -2,9 +2,11 @@ package fun
 
 import (
 	"errors"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 )
 
 /*
@@ -101,4 +103,53 @@ func DirEndsWithSlash(dirPath string) string {
 	}
 
 	return dirPath
+}
+
+/*
+	【名称:】获取某目录指定后缀的所有文件
+	【参数:】目录路径(string)，后缀(string)
+	【返回:】路径(string)
+	【备注:】
+*/
+func DirFilesBySuffix(dir string, suffix string) ([]DirFile, error) {
+	files := []DirFile{}
+
+	fis, err := ioutil.ReadDir(filepath.Clean(filepath.ToSlash(dir)))
+	if err != nil {
+		return files, err
+	}
+
+	for _, f := range fis {
+		_path := filepath.Join(dir, f.Name())
+
+		if f.IsDir() {
+			fs, _ := DirFilesBySuffix(_path, suffix)
+			files = append(files, fs...)
+			continue
+		}
+
+		// 指定格式
+		fileName := f.Name()
+		switch filepath.Ext(fileName) {
+		case suffix:
+			name := Rtrim(f.Name(), suffix)
+			item := DirFile{
+				Name:   name,
+				Path:   _path,
+				Suffix: suffix,
+				Size:    f.Size(),
+				ModTime: f.ModTime(),
+			}
+			files = append(files, item)
+		}
+	}
+
+	return files, nil
+}
+type DirFile struct {
+	Name    string    `json:"name"`     // 文件名
+	Suffix  string    `json:"suffix"`   // 后缀
+	Path    string    `json:"path"`     // 文件路径
+	Size    int64     `json:"size"`     // 文件大小
+	ModTime time.Time `json:"mod_time"` // 修改时间
 }
