@@ -2,6 +2,7 @@ package fun
 
 import (
 	"io"
+	"io/ioutil"
 	"os"
 	"strings"
 	"syscall"
@@ -41,7 +42,7 @@ func FileHide(filePath string) (bool, error) {
 
 /*
 	【名称:】文件复制
-	【参数:】文件路径(string)、目标路径
+	【参数:】文件路径(string)、目标路径(string)
 	【返回:】error
 	【备注:】
 */
@@ -77,4 +78,26 @@ func FileCopy(srcPath, destPath string) error {
 
 	_, err = io.Copy(dstFile, srcFile)
 	return err
+}
+
+
+/*
+	【名称:】获取文件内容bytes
+	【参数:】文件路径(string)
+	【返回:】[]byte，error
+	【备注:】
+*/
+func FileContentBytes(filedir string) ([]byte, error){
+	file, err := os.Open(filedir)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	bytes, err := ioutil.ReadAll(file)
+	if err != nil {
+		return nil, err
+	}
+
+	return bytes, nil
 }
