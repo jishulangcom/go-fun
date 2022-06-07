@@ -80,14 +80,13 @@ func FileCopy(srcPath, destPath string) error {
 	return err
 }
 
-
 /*
-	【名称:】获取文件内容bytes
+	【名称:】获取文件内容
 	【参数:】文件路径(string)
 	【返回:】[]byte，error
 	【备注:】
 */
-func FileContentBytes(filedir string) ([]byte, error){
+func GetFileContent(filedir string) ([]byte, error) {
 	file, err := os.Open(filedir)
 	if err != nil {
 		return nil, err
