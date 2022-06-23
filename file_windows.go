@@ -1,3 +1,5 @@
+// +build windows
+
 /*
 	【包名:】文件操作相关方法-windows
 	【作者:】技术狼
