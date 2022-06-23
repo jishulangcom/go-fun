@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
-	"syscall"
 )
 
 /*
@@ -18,25 +17,6 @@ func FileIsExist(filePath string) (bool, error) {
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
 		return false, err
 	}
-	return true, nil
-}
-
-/*
-	【名称:】文件隐藏
-	【参数:】文件路径(string)
-	【返回:】是否成功(bool)，错误信息(error)
-	【备注:】
-*/
-func FileHide(filePath string) (bool, error) {
-	namep, err := syscall.UTF16PtrFromString(filePath)
-	if err != nil {
-		return false, err
-	}
-
-	if err := syscall.SetFileAttributes(namep, syscall.FILE_ATTRIBUTE_HIDDEN); err != nil {
-		return false, err
-	}
-
 	return true, nil
 }
 

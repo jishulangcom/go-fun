@@ -15,7 +15,7 @@ import (
 	【返回:】类型名(string)
 	【备注:】
 */
-func Gettype(variable interface{}) string {
+func GetType(variable interface{}) string {
 	return reflect.TypeOf(variable).Kind().String()
 }
 
@@ -27,7 +27,7 @@ func Gettype(variable interface{}) string {
 	【备注:】
 */
 func IsBool(variable interface{}) bool {
-	if Gettype(variable) == "bool" {
+	if GetType(variable) == "bool" {
 		return true
 	}
 	return false
