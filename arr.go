@@ -41,7 +41,7 @@ func ArraySum(arr interface{}) (sum float64, err error) {
 	【返回:】true/false(bool)
 */
 func IsSlice(val interface{}) bool {
-	if Gettype(val) == "slice" {
+	if GetType(val) == "slice" {
 		return true
 	}
 	return false

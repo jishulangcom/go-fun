@@ -16,7 +16,7 @@ import (
 	【备注:】
 */
 func IsInt(variable interface{}) bool {
-	variableType := Gettype(variable)
+	variableType := GetType(variable)
 	if variableType == "int" || variableType == "uint" || variableType == "uint64" ||
 		variableType == "int64" || variableType == "uint32" || variableType == "int32" ||
 		variableType == "int8" || variableType == "uint8"{

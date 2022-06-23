@@ -16,7 +16,7 @@ import (
 	【备注:】
 */
 func IsString(variable interface{}) bool {
-	if Gettype(variable) == "string" {
+	if GetType(variable) == "string" {
 		return true
 	}
 	return false

@@ -16,7 +16,7 @@ import (
 	【返回:】true/false(bool)
 */
 func IsArray(val interface{}) bool {
-	if Gettype(val) == "array" {
+	if GetType(val) == "array" {
 		return true
 	}
 	return false
@@ -37,7 +37,7 @@ func Implode (separator string, arr interface{}) string {
 		return ""
 	}
 
-	arrType := Gettype(arr)
+	arrType := GetType(arr)
 	if(arrType != "array" && arrType != "slice" ) {
 		return ""
 	}

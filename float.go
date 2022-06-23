@@ -30,7 +30,7 @@ func IsFloat(variable interface{}) bool {
 	【备注:】
 */
 func IsDouble(variable interface{}) bool {
-	variableType := Gettype(variable)
+	variableType := GetType(variable)
 	if variableType == "float64" || variableType == "float32" {
 		return true
 	}
