@@ -17,3 +17,23 @@ func IoReaderToBytes(reader io.Reader) []byte {
 	data := buf.Bytes()
 	return data
 }
+
+/*
+	【名称:】获取io.Writer
+	【参数:】
+	【返回:】*bytes.Buffer
+	【备注:】
+*/
+func IoWriter() *bytes.Buffer {
+	return new(bytes.Buffer)
+}
+
+/*
+	【名称:】获取io.Reader
+	【参数:】
+	【返回:】*bytes.Buffer
+	【备注:】
+*/
+func IoReader(b []byte) io.Reader {
+	return bytes.NewReader(b)
+}

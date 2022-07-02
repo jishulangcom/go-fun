@@ -1,7 +1,6 @@
 package fun
 
 import (
-	"bytes"
 	"encoding/binary"
 	"io"
 	"math"
@@ -59,7 +58,7 @@ func UnsafeBytesToString(bytes []byte) string {
 	【备注:】
 */
 func BytesToIoReader(b []byte) io.Reader {
-	return bytes.NewReader(b)
+	return IoReader(b)
 }
 
 
