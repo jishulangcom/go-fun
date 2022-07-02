@@ -1,7 +1,9 @@
 package fun
 
 import (
+	"bytes"
 	"encoding/binary"
+	"io"
 	"math"
 	"reflect"
 	"unsafe"
@@ -9,31 +11,31 @@ import (
 
 
 /*
-	【名称:】byte转float32
+	【名称:】[]byte转float32
 	【参数:】[]byte
 	【返回:】float32
 	【备注:】
 */
-func ByteToFloat32(bytes []byte) float32 {
+func BytesToFloat32(bytes []byte) float32 {
 	bits := binary.LittleEndian.Uint32(bytes)
 	return math.Float32frombits(bits)
 }
 
 
 /*
-	【名称:】byte转float64
+	【名称:】[]byte转float64
 	【参数:】[]byte
 	【返回:】float64
 	【备注:】
 */
-func ByteToFloat64(bytes []byte) float64 {
+func BytesToFloat64(bytes []byte) float64 {
 	bits := binary.LittleEndian.Uint64(bytes)
 
 	return math.Float64frombits(bits)
 }
 
 /*
-	【名称:】不安全字节转string
+	【名称:】不安全的[]byte转string
 	【参数:】[]byte
 	【返回:】string
 	【备注:】
@@ -49,4 +51,16 @@ func UnsafeBytesToString(bytes []byte) string {
 	}
 	return *(*string)(unsafe.Pointer(hdr))
 }
+
+/*
+	【名称:】[]byte转io.Reader
+	【参数:】[]byte
+	【返回:】io.Reader
+	【备注:】
+*/
+func BytesToIoReader(b []byte) io.Reader {
+	return bytes.NewReader(b)
+}
+
+
 
