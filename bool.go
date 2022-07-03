@@ -1,3 +1,7 @@
+/*
+	// @title: 布尔相关函数
+	// @auth: 技术狼(jishulang.com)
+*/
 package fun
 
 // @title: 变量是否布尔类型

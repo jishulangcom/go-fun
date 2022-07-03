@@ -1,6 +1,6 @@
 /*
-	【包名:】字符串相关函数
-	【作者:】技术狼
+	// @title: 字符串相关函数
+	// @auth: 技术狼(jishulang.com)
 */
 package fun
 
