@@ -14,12 +14,11 @@ import (
 	"time"
 )
 
-/*
-	【名称:】生成随机字符
-	【参数:】个数(int)
-	【返回:】字符串(string)
-	【备注:】
-*/
+// @title: 生成随机字符
+// @param: 个数(int)
+// @return: 字符串(string)
+// @description: a-z,A-Z,0-9
+// @date: 2022/7/3 21:07
 func RandString(n int) string {
 	const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	var src = rand.NewSource(time.Now().UnixNano())
@@ -43,12 +42,11 @@ func RandString(n int) string {
 	return string(b)
 }
 
-/*
-	【名称:】是否手机号
-	【参数:】手机号(string)
-	【返回:】true/false(bool)
-	【备注:】
-*/
+// @title: 是否手机号
+// @param: 手机号(string)
+// @return: true/false(bool)
+// @description:
+// @date: 2022/7/3 21:10
 func IsMobile(mobile string) bool {
 	result, _ := regexp.MatchString(`^(1[3|4|5|8][0-9]\d{4,8})$`, mobile)
 	if result {
@@ -57,12 +55,11 @@ func IsMobile(mobile string) bool {
 	return false
 }
 
-/*
-	【名称:】手机号*号处理
-	【参数:】手机号(string)
-	【返回:】加*号的手机号(string)
-	【备注:】非手机号则直接返回原字符
-*/
+// @title: 手机号*号处理
+// @param: 手机号(string)
+// @return: 加*号的手机号(string)
+// @description: 非手机号则直接返回原字符
+// @date: 2022/7/3 21:13
 func MobileStar(mobile string) string {
 	if IsMobile(mobile) {
 		return mobile[:3] + "****" + mobile[7:]
@@ -71,24 +68,22 @@ func MobileStar(mobile string) string {
 	return mobile
 }
 
-/*
-	【名称:】是否邮箱
-	【参数:】邮箱(string)
-	【返回:】true/false(bool)
-	【备注:】
-*/
+// @title: 是否邮箱
+// @param: 邮箱(string)
+// @return: true/false(bool)
+// @description:
+// @date: 2022/7/3 21:16
 func IsEmail(email string) bool {
 	pattern := `^[0-9a-z][_.0-9a-z-]{0,31}@([0-9a-z][0-9a-z-]{0,30}[0-9a-z]\.){1,4}[a-z]{2,4}$`
 	reg := regexp.MustCompile(pattern)
 	return reg.MatchString(email)
 }
 
-/*
-	【名称:】string转int
-	【参数:】字符串(str)
-	【返回:】int
-	【备注:】
-*/
+// @title: string转int
+// @param: 字符串(str)
+// @return: int, error
+// @description:
+// @date: 2022/7/3 21:18
 func StrToInt(str string) (int, error) {
 	i, err := strconv.Atoi(str)
 	if err != nil {
@@ -97,12 +92,11 @@ func StrToInt(str string) (int, error) {
 	return i, nil
 }
 
-/*
-	【名称:】string转int64
-	【参数:】字符串(str)
-	【返回:】int64，error
-	【备注:】
-*/
+// @title: string转int64
+// @param: 字符串(str)
+// @return: int64，error
+// @description:
+// @date: 2022/7/3 21:25
 func StrToInt64(str string) (int64, error) {
 	i, err := strconv.ParseInt(str, 10, 64)
 	if err != nil {
@@ -111,12 +105,11 @@ func StrToInt64(str string) (int64, error) {
 	return i, nil
 }
 
-/*
-	【名称:】string转uint64
-	【参数:】字符串(str)
-	【返回:】uint64，error
-	【备注:】
-*/
+// @title: string转uint64
+// @param: 字符串(str)
+// @return: uint64，error
+// @description:
+// @date: 2022/7/3 21:28
 func StrToUint64(str string) (uint64, error) {
 	i, err := StrToInt64(str)
 	if err != nil {
@@ -128,12 +121,11 @@ func StrToUint64(str string) (uint64, error) {
 	return ui, nil
 }
 
-/*
-	【名称:】string转float64
-	【参数:】str
-	【返回:】float64
-	【备注:】
-*/
+// @title: string转float64
+// @param: 字符串(str)
+// @return: float64, error
+// @description:
+// @date: 2022/7/3 21:29
 func StrToFloat64(str string) (float64, error) {
 	f, err := strconv.ParseFloat(str, 64)
 	if err != nil {
@@ -142,12 +134,11 @@ func StrToFloat64(str string) (float64, error) {
 	return f, nil
 }
 
-/*
-	【名称:】string转*big.float
-	【参数:】str
-	【返回:】*big.Float
-	【备注:】
-*/
+// @title: string转*big.float
+// @param: 字符串(str)
+// @return: *big.Float, bool
+// @description:
+// @date: 2022/7/3 21:31
 func StrToBigFloat(str string) (*big.Float, bool) {
 	bigval, ok := new(big.Float).SetString(str)
 	if !ok {
@@ -156,12 +147,12 @@ func StrToBigFloat(str string) (*big.Float, bool) {
 	return bigval, true
 }
 
-/*
-	【名称:】string转*big.Int
-	【参数:】str，exp精度位
-	【返回:】*big.Int
-	【备注:】
-*/
+// @title: string转*big.Int
+// @param: (字符)string，(精度位)int64
+// @return: *big.Int, bool
+// @description:
+// @auth: 技术狼
+// @date: 2022/7/3 21:00
 func StrToBigInt(str string, exp int64) (*big.Int, bool) {
 	bigval, ok := StrToBigFloat(str)
 	if !ok {
@@ -180,12 +171,11 @@ func StrToBigInt(str string, exp int64) (*big.Int, bool) {
 	return result, true
 }
 
-/*
-	【名称:】某字符串是否存在数组中
-	【参数:】字符(string)，数组(array)
-	【返回:】布尔(bool)
-	【备注:】
-*/
+// @title: 某字符串是否存在数组中
+// @param: 字符(string)，数组(array)
+// @return: 布尔(bool)
+// @description:
+// @date: 2022/7/3 21:33
 func StrIsInArr(target string, str_array []string) bool {
 	sort.Strings(str_array)
 	index := sort.SearchStrings(str_array, target)
