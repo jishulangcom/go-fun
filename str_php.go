@@ -157,13 +157,11 @@ func Ltrim(str, charlist string) string {
 	return strings.TrimLeft(str, charlist)
 }
 
-
-/*
-	【名称:】移除字符串右侧的字符
-	【参数:】字符串(string)，要移除的字符(string)
-	【返回:】字符串(string)
-	【备注:】
-*/
+// @title: 移除字符串右侧的字符
+// @param: 字符串(string)，要移除的字符(string)
+// @return: 字符串(string)
+// @description:
+// @date: 2022/7/4 22:07
 func Rtrim(str, charlist string) string {
 	if charlist == "" {
 		charlist = " \r\n\t\x0B"
@@ -215,4 +213,13 @@ func Chr(ascii int32) string {
 */
 func StrRepeat(input string, multiplier int) string {
 	return strings.Repeat(input, multiplier)
+}
+
+// @title: 字符替换
+// @param: 要替换的字符串(string)，旧字符(string)，新字符(string)
+// @return: string
+// @description:
+// @date: 2022/7/4 22:14
+func StrReplace(strs string, oldStr string, newStr string) string {
+	return strings.Replace(strs, oldStr, newStr, -1)
 }
