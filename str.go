@@ -5,6 +5,7 @@
 package fun
 
 import (
+	"fmt"
 	"math/big"
 	"math/rand"
 	"regexp"
@@ -154,21 +155,24 @@ func StrToBigFloat(str string) (*big.Float, bool) {
 // @auth: 技术狼
 // @date: 2022/7/3 21:00
 func StrToBigInt(str string, exp int64) (*big.Int, bool) {
-	bigval, ok := StrToBigFloat(str)
+	expStr := fmt.Sprintf("1e%d", exp) // "1e" + "8"
+
+	amount := new(big.Rat)
+	_, ok := amount.SetString(str)
 	if !ok {
 		return nil, false
 	}
+	bigexp := new(big.Rat)
+	_, ok2 := bigexp.SetString(expStr)
+	if !ok2 {
+		return nil, false
+	}
 
-	coin := new(big.Float)
-	b := new(big.Int).Exp(big.NewInt(10), big.NewInt(exp), nil)
-	coin.SetInt(b)
+	result := new(big.Rat).Mul(amount, bigexp)
 
-	bigval.Mul(bigval, coin)
+	result.FloatString(0)
 
-	result := new(big.Int)
-	bigval.Int(result)
-
-	return result, true
+	return new(big.Int).SetString(result.FloatString(0), 10)
 }
 
 // @title: 某字符串是否存在数组中
