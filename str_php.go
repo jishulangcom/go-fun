@@ -89,7 +89,7 @@ func Ucfirst(str string) string {
 	【返回:】字符串(string)
 	【备注:】
 */
-func Strtoupper(str string) string {
+func StrToUpper(str string) string {
 	return strings.ToUpper(str)
 }
 
@@ -100,7 +100,7 @@ func Strtoupper(str string) string {
 	【返回:】字符串(string)
 	【备注:】
 */
-func Strtolower(str string) string {
+func StrToLower(str string) string {
 	return strings.ToLower(str)
 }
 
