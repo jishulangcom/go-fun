@@ -6,6 +6,12 @@ import (
 	"strconv"
 )
 
+/*
+【名称:】Interface转换string
+【参数:】val(interface)
+【返回:】string
+【备注:】
+*/
 func InterfaceToStr(val interface{}) string {
 	var str string
 
@@ -62,12 +68,11 @@ func InterfaceToStr(val interface{}) string {
 	return str
 }
 
-
 /*
-	【名称:】转换为 Float64
-	【参数:】val(interface)
-	【返回:】和(float64)，err(error)
-	【备注:】
+【名称:】interface{}转float64
+【参数:】val(interface)
+【返回:】float64, error
+【备注:】
 */
 func InterfaceToFloat64(val interface{}) (f64 float64, err error) {
 	switch value := val.(type) {
@@ -115,4 +120,31 @@ func InterfaceToFloat64(val interface{}) (f64 float64, err error) {
 	default:
 		return 0, errors.New("转换为float64失败")
 	}
+}
+
+/*
+	【名称:】interface{}转int64
+	【参数:】val(interface)
+	【返回:】int64, error
+	【备注:】
+*/
+func InterfaceToInt64(val interface{}) (int64, error) {
+	if IsDouble(val) {
+		f64, err := InterfaceToFloat64(val)
+		if err != nil {
+			return 0, err
+		}
+		i64 := Float64ToInt64(f64)
+		return i64, nil
+	}
+
+	if IsNumeric(val) {
+		i64, ok := val.(int64)
+		if !ok {
+			return 0, errors.New("to int64 fail")
+		}
+		return i64, nil
+	}
+
+	return 0, errors.New("not numeric type")
 }
