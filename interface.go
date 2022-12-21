@@ -139,11 +139,15 @@ func InterfaceToInt64(val interface{}) (int64, error) {
 	}
 
 	if IsNumeric(val) {
+		/*
 		i64, ok := val.(int64)
 		if !ok {
 			return 0, errors.New("to int64 fail")
 		}
 		return i64, nil
+		*/
+		str := fmt.Sprintf("%v", val)
+		return StrToInt64(str)
 	}
 
 	return 0, errors.New("not numeric type")
