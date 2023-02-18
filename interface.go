@@ -129,22 +129,60 @@ func InterfaceToFloat64(val interface{}) (f64 float64, err error) {
 	【备注:】
 */
 func InterfaceToInt64(val interface{}) (int64, error) {
-	if IsDouble(val) {
-		f64, err := InterfaceToFloat64(val)
+	switch value := val.(type) {
+	case float64:
+		return Float64ToInt64(value), nil
+	case float32:
+		return Float32ToInt64(value), nil
+	case uint8:
+		return int64(value), nil
+	case uint16:
+		return int64(value), nil
+	case uint32:
+		return int64(value), nil
+	case uint64:
+		return int64(value), nil
+	case uint:
+		return int64(value), nil
+	case int8:
+		return int64(value), nil
+	case int16:
+		return int64(value), nil
+	case int32:
+		return int64(value), nil
+	case int64:
+		return int64(value), nil
+	case int:
+		return int64(value), nil
+	case bool:
+		return 0, errors.New("val is bool")
+	case string:
+		v, err := StrToInt64(value)
 		if err != nil {
 			return 0, err
 		}
-		i64 := Float64ToInt64(f64)
-		return i64, nil
+		return v, nil
+	default:
+		return 0, errors.New("转换为float64失败")
 	}
 
-	if IsNumeric(val) {
-		i64, ok := val.(int64)
-		if !ok {
-			return 0, errors.New("to int64 fail")
-		}
-		return i64, nil
-	}
+
+	//if IsDouble(val) {
+	//	f64, err := InterfaceToFloat64(val)
+	//	if err != nil {
+	//		return 0, err
+	//	}
+	//	i64 := Float64ToInt64(f64)
+	//	return i64, nil
+	//}
+	//
+	//if IsNumeric(val) {
+	//	i64, ok := val.(int64)
+	//	if !ok {
+	//		return 0, errors.New("to int64 fail")
+	//	}
+	//	return i64, nil
+	//}
 
 	return 0, errors.New("not numeric type")
 }

@@ -23,7 +23,7 @@ func ArraySum(arr interface{}) (sum float64, err error) {
 	case reflect.Slice, reflect.Array:
 		for i := 0; i < list.Len(); i++ {
 			val := list.Index(i)
-			v, err := ToFloat64(val.Interface())
+			v, err := InterfaceToFloat64(val.Interface())
 			if err != nil {
 				return 0, err
 			}
