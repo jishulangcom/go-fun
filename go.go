@@ -37,3 +37,23 @@ func CallFun(any interface{}, funName string, args ...interface{}) []reflect.Val
 	}
 	return reflect.ValueOf(any).MethodByName(funName).Call(inputs)
 }
+
+/*
+	【名称:】获取环境变量值
+	【参数:】
+	【返回:】
+	【备注:】
+*/
+func GetEnv(key string) (string, bool) {
+	return os.LookupEnv(key)
+}
+
+/*
+	【名称:】设置环境变量值
+	【参数:】
+	【返回:】
+	【备注:】
+*/
+func SetEnv(key string, val string) error {
+	return os.Setenv(key, val)
+}

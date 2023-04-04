@@ -1,6 +1,7 @@
 package fun
 
 import (
+	"encoding/base32"
 	"encoding/binary"
 	"io"
 	"math"
@@ -61,5 +62,24 @@ func BytesToIoReader(b []byte) io.Reader {
 	return IoReader(b)
 }
 
+/*
+	【名称:】base32加密
+	【参数:】[]byte
+	【返回:】string
+	【备注:】
+*/
+func Base32Encode(src []byte) string {
+	return base32.StdEncoding.EncodeToString(src)
+}
+
+/*
+	【名称:】base32解密
+	【参数:】string
+	【返回:】[]byte, error
+	【备注:】
+*/
+func Base32Decode(s string) ([]byte, error) {
+	return base32.StdEncoding.DecodeString(s)
+}
 
 
