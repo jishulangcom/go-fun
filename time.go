@@ -6,6 +6,7 @@ import (
 
 const ORIGIN_TIME = "2006-01-02 15:04:05" //go原始时间
 
+
 /*
 	【名称:】Rfc3339格式时间转为正常时间
 	【参数:】Rfc3339时间字符(string)
@@ -104,3 +105,59 @@ func DateTimeStrAadNowSub(ts string) (time.Duration, error) {
 
 	return reverseTime, nil
 }
+
+/*
+	【名称:】时间戳转日期
+	【参数:】int64，*time.Location
+	【返回:】string
+	【备注:】
+*/
+func TimestampToDate(timestamp int64, loc *time.Location) string {
+	tm := time.Unix(timestamp, 0).In(loc) // time.UTC
+	return tm.Format("2006-01-02")
+}
+
+/*
+	【名称:】时间戳转日期数字
+	【参数:】int64，*time.Location
+	【返回:】string
+	【备注:】
+*/
+func TimestampToDateNumber(timestamp int64, loc *time.Location) string {
+	tm := time.Unix(timestamp, 0).In(time.UTC) // time.UTC
+	return tm.Format("20060102")
+}
+
+/*
+	【名称:】时区-东八区(中国上海)
+	【参数:】
+	【返回:】*time.Location
+	【备注:】
+*/
+func LocAsiaShanghai() *time.Location {
+	loc, _ := time.LoadLocation("Asia/Shanghai")
+	return loc
+}
+
+/*
+	【名称:】时区-0时区
+	【参数:】
+	【返回:】*time.Location
+	【备注:】
+*/
+func LocUTC() *time.Location {
+	return time.UTC
+}
+
+/*
+	【名称:】时区-西八区(洛杉矶)
+	【参数:】
+	【返回:】*time.Location
+	【备注:】
+*/
+func LocAmericaLosAngeles() *time.Location {
+	loc, _ := time.LoadLocation("America/Los_Angeles")
+	return loc
+}
+
+
