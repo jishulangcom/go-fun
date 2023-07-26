@@ -214,7 +214,7 @@ func GetSometimeApartNDaysTimesFormat(t time.Time, days int, dayN int, SameDay b
 			SameDay:当天是否在内
 			format:日期格式（如:2006-01-02 15:04:05）
 	【返回:】[]time.Time
-	【备注:】
+	【备注:】 可以用来获取明天、昨天日期
 */
 func GetSometimeApartNDaysTimeFormat(t time.Time, days int, format string) string {
 	newT := t.AddDate(0, 0, days)
