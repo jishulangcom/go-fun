@@ -161,7 +161,7 @@ func LocAmericaLosAngeles() *time.Location {
 }
 
 /*
-	【名称:】获取某个时间相隔N天的连续天数
+	【名称:】获取某个时间相隔N天的连续时间
 	【参数:】t:某个时间
 			days:相隔N天
 			dayN:取多少天
@@ -182,6 +182,44 @@ func GetSometimeApartNDaysTimes(t time.Time, days int, dayN int, SameDay bool) [
 		t = newTime
 	}
 	return list
+}
+
+/*
+	【名称:】获取某个时间相隔N天的连续时间(指定日期格式)
+	【参数:】t:某个时间
+			days:相隔N天
+			dayN:取多少天
+			SameDay:当天是否在内
+			format:日期格式（如:2006-01-02 15:04:05）
+	【返回:】[]time.Time
+	【备注:】
+*/
+func GetSometimeApartNDaysTimesFormat(t time.Time, days int, dayN int, SameDay bool, format string) []string {
+	list := GetSometimeApartNDaysTimes(t, days, dayN, SameDay)
+	newList := make([]string, 0, len(list))
+	for _, t := range list {
+		date := t.Format(format)
+		newList = append(newList, date)
+	}
+
+	return newList
+}
+
+
+/*
+	【名称:】获取某个时间相隔N天的时间(指定日期格式)
+	【参数:】t:某个时间
+			days:相隔N天
+			dayN:取多少天
+			SameDay:当天是否在内
+			format:日期格式（如:2006-01-02 15:04:05）
+	【返回:】[]time.Time
+	【备注:】
+*/
+func GetSometimeApartNDaysTimeFormat(t time.Time, days int, format string) string {
+	newT := t.AddDate(0, 0, days)
+	str := newT.Format(format)
+	return str
 }
 
 
