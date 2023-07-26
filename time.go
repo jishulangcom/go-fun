@@ -160,4 +160,28 @@ func LocAmericaLosAngeles() *time.Location {
 	return loc
 }
 
+/*
+	【名称:】获取某个时间相隔N天的连续天数
+	【参数:】t:某个时间
+			days:相隔N天
+			dayN:取多少天
+			SameDay:当天是否在内
+	【返回:】[]time.Time
+	【备注:】
+*/
+func GetSometimeApartNDaysTimes(t time.Time, days int, dayN int, SameDay bool) []time.Time {
+	list := make([]time.Time, 0, dayN)
+	I := 0
+	if SameDay {
+		I = 1
+		list = append(list, t)
+	}
+	for i := I; i < dayN; i++ {
+		newTime := t.AddDate(0, 0, days)
+		list = append(list, newTime)
+		t = newTime
+	}
+	return list
+}
+
 
