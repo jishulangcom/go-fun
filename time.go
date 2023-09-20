@@ -71,40 +71,6 @@ func Millisecond() int64 {
 	return time.Now().UnixNano() / 1e6
 }
 
-/*
-	【名称:】一个字符串时间与当前时间的时间差
-	【参数:】字符串时间(string) 如：2022-05-22 23:59:59
-	【返回:】time.Duration，error
-	【备注:】
-*/
-func DateTimeStrAadNowSub(ts string) (time.Duration, error) {
-	// 本地时间
-	now := time.Now()
-
-	// 按照指定格式解析一个字符串格式的时间
-	_, err := time.Parse("2006-01-02 15:04:05", ts)
-	if err != nil {
-		return 0, err
-	}
-
-	// 按照东八区的时区格式解析一个字符串
-	tlocal, err := time.LoadLocation("Asia/Shanghai")
-	if err != nil {
-		return 0, err
-	}
-
-	// 按照指定的时区解析时间
-	t, err := time.ParseInLocation("2006-01-02 15:04:05", ts, tlocal)
-	if err != nil {
-		return 0, err
-	}
-
-	// 计算时间的差值
-	//reverseTime := now.Sub(t)
-	reverseTime := t.Sub(now)
-
-	return reverseTime, nil
-}
 
 /*
 	【名称:】时间戳转日期
@@ -220,6 +186,52 @@ func GetSometimeApartNDaysTimeFormat(t time.Time, days int, format string) strin
 	newT := t.AddDate(0, 0, days)
 	str := newT.Format(format)
 	return str
+}
+
+
+/*
+	【名称:】时间差（当前时间-某个时间）
+	【参数:】dateTimeStr:某个时间（格式：2006-01-02 15:04:05）
+			loc:时区（如:time.UTC）
+	【返回:】 秒
+	【备注:】 now-dateTimeStr
+*/
+func TimeDifferenceNowSubDateTime(dateTimeStr string, loc *time.Location) (int, error) {
+	now, err := time.ParseInLocation("2006-01-02 15:04:05", time.Now().Format("2006-01-02 15:04:05"), loc)
+	if err != nil {
+		return 0, err
+	}
+
+	t, err := time.ParseInLocation("2006-01-02 15:04:05", dateTimeStr, loc)
+	if err != nil {
+		return 0, err
+	}
+
+	reverseTime := now.Sub(t)
+	return int(reverseTime.Seconds()), nil
+}
+
+
+/*
+	【名称:】时间差（两个指定时间）
+	【参数:】dateTimeStr1:某个时间， dateTimeStr2:某个时间（格式：2006-01-02 15:04:05）
+			loc:时区（如:time.UTC）
+	【返回:】 秒
+	【备注:】 dateTimeStr1-dateTimeStr2
+*/
+func TimeDifferenceTwoDateTime(dateTimeStr1 string, dateTimeStr2 string, loc *time.Location) (int, error) {
+	t1, err := time.ParseInLocation("2006-01-02 15:04:05", dateTimeStr1, loc)
+	if err != nil {
+		return 0, err
+	}
+
+	t2, err := time.ParseInLocation("2006-01-02 15:04:05", dateTimeStr2, loc)
+	if err != nil {
+		return 0, err
+	}
+
+	reverseTime := t1.Sub(t2)
+	return int(reverseTime.Seconds()), nil
 }
 
 
