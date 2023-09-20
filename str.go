@@ -202,3 +202,20 @@ func StrIsInString(target string, strs string) bool {
 	}
 	return false
 }
+
+
+/*
+【名称:】去除小数点后面无效的0
+【参数:】浮点数字(字符串)
+【返回:】字符串
+【备注:】
+*/
+func RemoveInvalidZeroAfterDecimalPoint(str string) string {
+	for strings.HasSuffix(str, "0") {
+		str = strings.TrimSuffix(str, "0")
+	}
+	if strings.HasSuffix(str, ".") {
+		str = strings.TrimSuffix(str, ".")
+	}
+	return str
+}
