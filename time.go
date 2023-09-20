@@ -197,12 +197,12 @@ func GetSometimeApartNDaysTimeFormat(t time.Time, days int, format string) strin
 	【备注:】 now-dateTimeStr
 */
 func TimeDifferenceNowSubDateTime(dateTimeStr string, loc *time.Location) (int, error) {
-	now, err := time.ParseInLocation("2006-01-02 15:04:05", time.Now().Format("2006-01-02 15:04:05"), loc)
+	now, err := time.ParseInLocation(ORIGIN_TIME, time.Now().Format("2006-01-02 15:04:05"), loc)
 	if err != nil {
 		return 0, err
 	}
 
-	t, err := time.ParseInLocation("2006-01-02 15:04:05", dateTimeStr, loc)
+	t, err := time.ParseInLocation(ORIGIN_TIME, dateTimeStr, loc)
 	if err != nil {
 		return 0, err
 	}
@@ -220,12 +220,12 @@ func TimeDifferenceNowSubDateTime(dateTimeStr string, loc *time.Location) (int, 
 	【备注:】 dateTimeStr1-dateTimeStr2
 */
 func TimeDifferenceTwoDateTime(dateTimeStr1 string, dateTimeStr2 string, loc *time.Location) (int, error) {
-	t1, err := time.ParseInLocation("2006-01-02 15:04:05", dateTimeStr1, loc)
+	t1, err := time.ParseInLocation(ORIGIN_TIME, dateTimeStr1, loc)
 	if err != nil {
 		return 0, err
 	}
 
-	t2, err := time.ParseInLocation("2006-01-02 15:04:05", dateTimeStr2, loc)
+	t2, err := time.ParseInLocation(ORIGIN_TIME, dateTimeStr2, loc)
 	if err != nil {
 		return 0, err
 	}
